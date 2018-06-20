@@ -120,6 +120,15 @@ add_action( 'widgets_init', 'tr_theme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function tr_theme_scripts() {
+
+    wp_enqueue_style('main-css', get_template_directory_uri() . '/css/main.css');
+
+    wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
+
+    wp_enqueue_script("jquery");
+
+    wp_enqueue_script('main-js', get_template_directory_uri() . '/js/main.js');
+
 	wp_enqueue_style( 'tr_theme-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'tr_theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -159,3 +168,411 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function kulyk_wordpress_customize_register($wp_customize)
+{
+    // header section
+
+    $wp_customize->add_section('header_settings', array(
+        'title' => __('Header settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('header_background');
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'header_background', array(
+        'label' => __('Insert header background image', 'kulyk_wordpress'),
+        'section' => 'header_settings',
+        'settings' => 'header_background',
+    )));
+
+    $wp_customize->add_setting('header_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'header_text', array(
+        'label' => __('Enter header text', 'kulyk_wordpress'),
+        'section' => 'header_settings',
+        'settings' => 'header_text',
+        'type' => 'text',
+    ));
+    $wp_customize->add_setting('subheader_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'subheader_text', array(
+        'label' => __('Enter subheader text', 'kulyk_wordpress'),
+        'section' => 'header_settings',
+        'settings' => 'subheader_text',
+        'type' => 'textarea',
+    ));
+    $wp_customize->add_setting('link_text', array(
+        'default' => __('Read more', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'link_text', array(
+        'label' => __('Enter link text', 'kulyk_wordpress'),
+        'section' => 'header_settings',
+        'settings' => 'link_text',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('link_url', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'link_url', array(
+        'label' => __('Enter link url', 'kulyk_wordpress'),
+        'section' => 'header_settings',
+        'settings' => 'link_url',
+        'type' => 'text',
+    ));
+
+    // features section
+
+    $wp_customize->add_section('features_settings', array(
+        'title' => __('Features settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('features_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'features_text', array(
+        'label' => __('Enter features text', 'kulyk_wordpress'),
+        'section' => 'features_settings',
+        'settings' => 'features_text',
+        'type' => 'textarea',
+    ));
+
+    // Works section
+
+    $wp_customize->add_section('works_settings', array(
+        'title' => __('Works section settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('works_heading', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'works_heading', array(
+        'label' => __('Enter features head text', 'kulyk_wordpress'),
+        'section' => 'works_settings',
+        'settings' => 'works_heading',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('works_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'works_text', array(
+        'label' => __('Enter works text', 'kulyk_wordpress'),
+        'section' => 'works_settings',
+        'settings' => 'works_text',
+        'type' => 'text',
+    ));
+
+    // reviews
+
+    $wp_customize->add_section('reviews_settings', array(
+        'title' => __('Reviews section settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('reviews_heading', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'reviews_heading', array(
+        'label' => __('Enter reviews head text', 'kulyk_wordpress'),
+        'section' => 'reviews_settings',
+        'settings' => 'reviews_heading',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('review_img');
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'secondary_header_img', array(
+        'label' => __('Insert background image', 'kulyk_wordpress'),
+        'section' => 'reviews_settings',
+        'settings' => 'review_img',
+    )));
+
+    // prices section
+
+    $wp_customize->add_section('prices_settings', array(
+        'title' => __('Prices section settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('prices_heading', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'prices_heading', array(
+        'label' => __('Enter features head text', 'kulyk_wordpress'),
+        'section' => 'prices_settings',
+        'settings' => 'prices_heading',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('prices_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'prices_text', array(
+        'label' => __('Enter prices text', 'kulyk_wordpress'),
+        'section' => 'prices_settings',
+        'settings' => 'prices_text',
+        'type' => 'text',
+    ));
+
+    // faq section
+
+    $wp_customize->add_section('faq_settings', array(
+        'title' => __('FAQ section settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('faq_heading', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'faq_heading', array(
+        'label' => __('Enter faq head text', 'kulyk_wordpress'),
+        'section' => 'faq_settings',
+        'settings' => 'faq_heading',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('faq_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'faq_text', array(
+        'label' => __('Enter prices text', 'kulyk_wordpress'),
+        'section' => 'faq_settings',
+        'settings' => 'faq_text',
+        'type' => 'text',
+    ));
+
+    // blog section
+
+    $wp_customize->add_section('blog_settings', array(
+        'title' => __('Blog section settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('blog_heading', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'blog_heading', array(
+        'label' => __('Enter blog head text', 'kulyk_wordpress'),
+        'section' => 'blog_settings',
+        'settings' => 'blog_heading',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('blog_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'faq_text', array(
+        'label' => __('Enter blog text', 'kulyk_wordpress'),
+        'section' => 'blog_settings',
+        'settings' => 'blog_text',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('blog_link_text', array(
+        'default' => __('Read more', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'blog_link_text', array(
+        'label' => __('Enter link text', 'kulyk_wordpress'),
+        'section' => 'blog_settings',
+        'settings' => 'blog_link_text',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('blog_read_button', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'blog_read_button', array(
+        'label' => __('Enter blog read more button text', 'kulyk_wordpress'),
+        'section' => 'blog_settings',
+        'settings' => 'blog_read_button',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('blog_link_url', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'blog_link_url', array(
+        'label' => __('Enter link url', 'kulyk_wordpress'),
+        'section' => 'blog_settings',
+        'settings' => 'blog_link_url',
+        'type' => 'text',
+    ));
+
+    //footer
+
+    $wp_customize->add_section('footer_settings', array(
+        'title' => __('Footer settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('footer_logo');
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_logo', array(
+        'label' => __('Insert logo for footer', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_logo',
+    )));
+    $wp_customize->add_setting('footer_info_text', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_info_text', array(
+        'label' => __('Enter footer info', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_info_text',
+        'type' => 'textarea',
+    ));
+
+    $wp_customize->add_setting('footer_phone_head', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_phone_head', array(
+        'label' => __('Enter footer info', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_phone_head',
+        'type' => 'text',
+    ));
+    $wp_customize->add_setting('footer_phone_mobile', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_phone_mobile', array(
+        'label' => __('Enter footer mobile phone', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_phone_mobile',
+        'type' => 'text',
+    ));
+    $wp_customize->add_setting('footer_phone_work', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_phone_work', array(
+        'label' => __('Enter footer work phone', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_phone_work',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('footer_address_head', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_address_head', array(
+        'label' => __('Enter footer address head', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_address_head',
+        'type' => 'text',
+    ));
+    $wp_customize->add_setting('footer_address', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_address', array(
+        'label' => __('Enter footer address', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_address',
+        'type' => 'textarea',
+    ));
+
+
+    $wp_customize->add_setting('footer_address_link_text', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_address_link_text', array(
+        'label' => __('Enter footer address map text', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_address_link_text',
+        'type' => 'text',
+    ));
+    $wp_customize->add_setting('footer_address_link_url', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_address_link_url', array(
+        'label' => __('Enter footer address map url', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_address_link_url',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('footer_copyright', array(
+        'default' => __('#', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'footer_copyright', array(
+        'label' => __('Enter footer copyright', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_copyright',
+        'type' => 'text',
+    ));
+}
+
+add_action('customize_register', 'kulyk_wordpress_customize_register');

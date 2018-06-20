@@ -1,0 +1,19 @@
+.main-button {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-family: "Raleway", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: #e84545;
+    border: 1px solid #e84545;
+    transition: 5ms;
+    &:hover {
+        background-color: transparent;
+        color: #e84545;
+    }
+}
