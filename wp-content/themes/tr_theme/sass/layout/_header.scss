@@ -11,14 +11,14 @@ div.primary-menu {
             margin: 5px 0 5px 20px;
             a {
                 opacity: 0.75;
-                color: #ffffff;
-                font-family: Raleway, sans-serif;
+                color: $additional_color;
+                font-family: $secondary_font;
                 font-size: 13px;
                 font-weight: 700;
                 text-transform: uppercase;
                 text-decoration: none;
                 &:hover {
-                    color: #e84545;
+                    color: $hover_color;
                 }
             }
         }
@@ -27,7 +27,7 @@ div.primary-menu {
 
 .header-heading {
     color: #ffffff;
-    font-family: "Open Sans", sans-serif;
+    font-family: $main_font;
     font-size: 65px;
     font-weight: 700;
     text-transform: uppercase;
@@ -36,7 +36,7 @@ div.primary-menu {
 
 .header-subheading {
     color: #ffffff;
-    font-family: Raleway, sans-serif;
+    font-family: $secondary_font;
     font-size: 22px;
     font-weight: 400;
     line-height: 33px;

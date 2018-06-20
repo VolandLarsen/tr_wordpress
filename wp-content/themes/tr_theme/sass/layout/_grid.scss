@@ -19,3 +19,19 @@
     padding-top: 40px;
     text-align: center;
 }
+
+// features
+
+.features-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 40px 0;
+    li.feature-item {
+        max-width: 300px;
+        margin: 10px;
+        list-style-type: none;
+        padding: 0;
+    }
+}

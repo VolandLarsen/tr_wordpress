@@ -576,3 +576,76 @@ function kulyk_wordpress_customize_register($wp_customize)
 }
 
 add_action('customize_register', 'kulyk_wordpress_customize_register');
+
+add_action( 'init', 'create_movie_review' );
+
+function create_movie_review() {
+    register_post_type( 'movie_reviews',
+        array(
+            'labels' => array(
+                'name' => 'Features',
+                'singular_name' => 'Movie Review',
+                'add_new' => 'Add New',
+                'add_new_item' => 'Add New Movie Review',
+                'edit' => 'Edit',
+                'edit_item' => 'Edit Movie Review',
+                'new_item' => 'New Movie Review',
+                'view' => 'View',
+                'view_item' => 'View Movie Review',
+                'search_items' => 'Search Movie Reviews',
+                'not_found' => 'No Movie Reviews found',
+                'not_found_in_trash' => 'No Movie Reviews found in Trash',
+                'parent' => 'Parent Movie Review'
+            ),
+
+            'public' => true,
+            'menu_position' => 15,
+            'supports' => array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
+            'has_archive' => true
+        )
+    );
+}
+
+add_action( 'add_meta_boxes', 'my_admin' );
+
+function my_admin() {
+    add_meta_box( 'feature_meta_box',
+        'Feature Details',
+        'display_feature_meta_box',
+        'features',
+        'normal',
+        'high'
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
