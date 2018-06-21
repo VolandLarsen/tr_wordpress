@@ -1,0 +1,21 @@
+// home page team
+
+.member-title {
+    h4 {
+        color: $main_color;
+        font-family: $secondary_font;
+        font-size: 22px;
+    }
+    .member-position {
+        color: $hover_color;
+        font-family: $secondary_font;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+}
+
+.member-entry-content span {
+    color: $secondary_color;
+    font-family: $secondary_font;
+    font-size: 14px;
+}

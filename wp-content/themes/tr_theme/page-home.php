@@ -39,24 +39,26 @@ get_header();
                     </ul>
                 </div>
             </section>
-            <section class="features">
-                    <ul class="features-list">
+            <section class="works">
+                    <ul class="works-list">
                         <?php
                         $loop = new WP_Query(array(
                             'post_type' => 'post',
                             'posts_per_page' => '8'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <li class="feature-item">
+                            <li class="work-item">
                                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                                    <div class="feature-img">
+                                    <div class="work-img">
                                         <?php the_post_thumbnail() ?>
-                                    </div>
-                                    <div class="feature-title">
-                                        <h3><?php the_title(); ?></h3>
-                                    </div>
-                                    <div class="feature-entry-content">
-                                        <p><?php the_excerpt(); ?></p>
+                                        <div class="absolute-text">
+                                            <a href="<?php the_permalink() ?>" class="text-container">
+                                                <div class="center-text">
+                                                    <h3 class="work-head"><?php the_title(); ?></h3>
+                                                    <span class="work-subtext"><?php the_excerpt(); ?></span>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </article>
                             </li>
@@ -67,10 +69,52 @@ get_header();
                         ?>
                     </ul>
             </section>
+            <section class="team">
+                <div class="container">
+                    <ul class="members-list">
+                        <?php
+                        $loop = new WP_Query(array(
+                            'post_type' => 'team_members',
+                            'posts_per_page' => '4'
+                        ));
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                            <li class="member-item">
 
+                                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                                    <div class="member-img">
+                                        <?php the_post_thumbnail() ?>
+                                    </div>
+                                    <div class="member-title">
+                                        <h4><?php the_title(); ?></h4>
+                                        <p class="member-position"><?php the_field('position'); ?></p>
+                                    </div>
+                                    <div class="member-entry-content">
+                                        <span><?php the_content(); ?></span>
+                                    </div>
+                                    <ul  class="member-social-list">
+                                        <li class="member-social-item">
+                                            <a class="member-social-link" href="<?php the_field('facebook_link') ?>"><?php the_field('facebook_icon') ?></a>
+                                        </li>
+                                        <li>
+                                            <a class="member-social-link" href="<?php the_field('twitter_link') ?>"><?php the_field('twitter_link_icon') ?></a>
+                                        </li>
+                                        <li>
+                                            <a class="member-social-link" href="<?php the_field('linkedin_link') ?>"><?php the_field('linkedin_link_icon') ?></a>
+                                        </li>
+                                    </ul>
+                                </article><!-- #post-<?php the_ID(); ?> -->
+
+                            </li>
+                        <?php endwhile; // End of the loop.
+
+                        wp_reset_postdata();
+
+                        ?>
+                    </ul>
+                </div>
+            </section>
         </main><!-- #main -->
     </div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

@@ -584,18 +584,18 @@ function create_movie_review() {
         array(
             'labels' => array(
                 'name' => 'Features',
-                'singular_name' => 'Movie Review',
+                'singular_name' => 'Feature',
                 'add_new' => 'Add New',
-                'add_new_item' => 'Add New Movie Review',
+                'add_new_item' => 'Add New Feature',
                 'edit' => 'Edit',
-                'edit_item' => 'Edit Movie Review',
-                'new_item' => 'New Movie Review',
+                'edit_item' => 'Edit Feature',
+                'new_item' => 'New Feature',
                 'view' => 'View',
-                'view_item' => 'View Movie Review',
-                'search_items' => 'Search Movie Reviews',
-                'not_found' => 'No Movie Reviews found',
-                'not_found_in_trash' => 'No Movie Reviews found in Trash',
-                'parent' => 'Parent Movie Review'
+                'view_item' => 'View Feature',
+                'search_items' => 'Search Feature',
+                'not_found' => 'No Features found',
+                'not_found_in_trash' => 'No Features found in Trash',
+                'parent' => 'Parent Feature'
             ),
 
             'public' => true,
@@ -619,6 +619,46 @@ function my_admin() {
 }
 
 
+add_action( 'init', 'create_team_post' );
+
+function create_team_post() {
+    register_post_type( 'team_members',
+        array(
+            'labels' => array(
+                'name' => 'Team',
+                'singular_name' => 'Member',
+                'add_new' => 'Add New',
+                'add_new_item' => 'Add New Member',
+                'edit' => 'Edit',
+                'edit_item' => 'Edit Member',
+                'new_item' => 'New Member',
+                'view' => 'View',
+                'view_item' => 'View Member',
+                'search_items' => 'Search Member',
+                'not_found' => 'No Members found',
+                'not_found_in_trash' => 'No Members found in Trash',
+                'parent' => 'Parent Member'
+            ),
+
+            'public' => true,
+            'menu_position' => 15,
+            'supports' => array( 'title', 'editor', 'comments', 'thumbnail', 'custom-fields' ),
+            'has_archive' => true
+        )
+    );
+}
+
+add_action( 'add_meta_boxes', 'my_admin_team' );
+
+function my_admin_team() {
+    add_meta_box( 'feature_meta_box',
+        'Member Details',
+        'display_member_meta_box',
+        'team_members',
+        'normal',
+        'high'
+    );
+}
 
 
 

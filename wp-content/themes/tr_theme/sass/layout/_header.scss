@@ -26,6 +26,9 @@ div.primary-menu {
 }
 
 .header-heading {
+    display: block;
+    margin: 20px auto;
+    max-width: 1000px;
     color: #ffffff;
     font-family: $main_font;
     font-size: 65px;
@@ -35,6 +38,9 @@ div.primary-menu {
 }
 
 .header-subheading {
+    display: block;
+    margin: 20px auto;
+    max-width: 1000px;
     color: #ffffff;
     font-family: $secondary_font;
     font-size: 22px;
