@@ -127,7 +127,7 @@ get_header();
                                 <li>
                                     <div>
                                         <blockquote><?php the_content(); ?></blockquote>
-                                        <span><?php the_title(); ?></span>
+                                        <p class="span-text"><?php the_title(); ?></p>
                                     </div>
                                 </li>
                             </ul>

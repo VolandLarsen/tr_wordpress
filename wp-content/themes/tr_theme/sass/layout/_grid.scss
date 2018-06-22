@@ -145,17 +145,26 @@ ul.members-list {
         flex-wrap: wrap;
     }
     li.member-item {
-        max-width: 300px;
-        margin: 20px;
+        max-width: 15em;
+        margin: 10px;
         list-style-type: none;
+        .member-img img {
+            width: 100%;
+            height: auto;
+        }
     }
 }
 
 .member-social-list {
     display: flex;
-    justify-content: left;
     align-items: center;
     padding: 0;
+    @media (min-width: $xs) {
+        justify-content: space-around;
+    }
+    @media (min-width: $sm) {
+        justify-content: left;
+    }
     li {
         list-style-type: none;
         a {
@@ -190,44 +199,118 @@ ul.members-list {
     .slick-dots {
         width: auto;
         position: absolute;
-        right: 30%;
-        bottom: 30%;
+        @media (min-width: $xs) {
+            bottom: 20px;
+            width: 100%;
+        }
+        @media (min-width: $sm) {
+            right: 20%;
+            bottom: 15%;
+            width: auto;
+        }
+        @media (min-width: $md) {
+            right: 20%;
+            bottom: 10%;
+        }
     }
 }
 
 .testemonial-list {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: start;
     padding: 0;
     max-width: 100%;
     overflow: hidden;
     background-color: #53354a;
+    @media (min-width: $xs) {
+        display: block;
+    }
+    @media (min-width: $sm) {
+        display: flex;
+    }
     li {
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
         list-style-type: none;
         padding: 0;
         box-sizing: border-box;
         width: 100%;
         div {
             margin: 50px 0 0 90px;
+            @media (min-width: $xs) {
+                margin: 50px 20px;
+            }
+            @media (min-width: $sm) {
+                margin: 10px;
+            }
+            @media (min-width: $md) {
+                margin: 50px 0 0 90px;
+            }
             blockquote {
                 display: block;
-                margin: 0;
-                max-width: 30em;
+                margin: 0 auto;
+                color: $additional_color;
+                font-size: 36px;
+                font-family: 'Cardo', serif;
+                font-style: italic;
+                @media (min-width: $xs) {
+                    text-align: center;
+                    font-size: 18px;
+                }
+                @media (min-width: $sm) {
+                    text-align: left;
+                    font-size: 20px;
+                }
+                @media (min-width: $sm) {
+                    font-size: 36px;
+                }
                 p {
                     color: $additional_color;
                     font-size: 36px;
                     font-family: 'Cardo', serif;
                     font-style: italic;
+                    max-width: 13em;
+                    @media (min-width: $xs) {
+                        text-align: center;
+                        font-size: 30px;
+                        margin: 0 auto;
+                    }
+                    @media (min-width: $sm) {
+                        text-align: left;
+                        font-size: 25px;
+                        margin: 0 auto;
+                    }
+                    @media (min-width: $md) {
+                        font-size: 25px;
+                        margin: 0;
+                    }
+                    @media (min-width: $lg) {
+                        font-size: 36px;
+                    }
                 }
             }
-            span {
+            .span-text {
                 color: $additional_color;
                 font-family: $additional_font;
                 font-size: 13px;
                 font-weight: bold;
-                line-height: 21px;
                 text-transform: uppercase;
+                @media (min-width: $xs) {
+                    text-align: center;
+                }
+                @media (min-width: $sm) {
+                    text-align: center;
+                }
+                @media (min-width: $md) {
+                    text-align: center;
+                }
+                @media (min-width: $lg) {
+                    text-align: left;
+                }
             }
         }
     }
@@ -241,10 +324,22 @@ ul.members-list {
     align-items: start;
     padding: 0;
     margin: 0;
+    @media (min-width: $xs) {
+        display: block;
+    }
+    @media (min-width: $sm) {
+        display: flex;
+    }
     li {
+        margin: 0 auto;
         max-width: 25%;
         list-style-type: none;
-
+        @media (min-width: $xs) {
+            max-width: 100%;
+        }
+        @media (min-width: $sm) {
+            max-width: 25%;
+        }
     }
 }
 

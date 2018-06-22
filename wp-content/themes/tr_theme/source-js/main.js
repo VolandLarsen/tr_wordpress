@@ -4,7 +4,7 @@ jQuery(document).ready(function(){
         infinite: true,
         speed: 500,
         fade: true,
-        adaptiveHeight: true,
+        adaptiveHeight: false,
         arrows: false
 });
 });

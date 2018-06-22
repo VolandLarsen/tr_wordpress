@@ -5,12 +5,24 @@
         color: $main_color;
         font-family: $secondary_font;
         font-size: 22px;
+        @media (min-width: $xs) {
+            text-align: center;
+        }
+        @media (min-width: $sm) {
+            text-align: left;
+        }
     }
     .member-position {
         color: $hover_color;
         font-family: $secondary_font;
         font-size: 13px;
         text-transform: uppercase;
+        @media (min-width: $xs) {
+            text-align: center;
+        }
+        @media (min-width: $sm) {
+            text-align: left;
+        }
     }
 }
 
@@ -18,4 +30,10 @@
     color: $secondary_color;
     font-family: $secondary_font;
     font-size: 14px;
+    @media (min-width: $xs) {
+        text-align: center;
+    }
+    @media (min-width: $sm) {
+        text-align: left;
+    }
 }
