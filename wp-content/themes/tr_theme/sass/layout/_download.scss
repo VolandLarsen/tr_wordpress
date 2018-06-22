@@ -1,0 +1,17 @@
+.download-container {
+    h3 {
+        color: $main_color;
+        font-family: $secondary_font;
+        font-size: 28px;
+        font-weight: lighter;
+        text-align: center;
+    }
+    p {
+        text-align: center;
+        color: $main_color;
+        font-family: $secondary_font;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

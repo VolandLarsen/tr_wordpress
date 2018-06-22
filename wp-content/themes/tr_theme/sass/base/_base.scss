@@ -7,7 +7,20 @@ body {
 .container {
   margin: 0 auto;
   padding: 0;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 65em;
+  @media (min-width: $xs) {
+    max-width: 18em;
+  }
+  @media (min-width: $sm) {
+    max-width: 40em;
+  }
+  @media (min-width: $md) {
+    max-width: 50em;
+  }
+  @media (min-width: $lg) {
+    max-width: 65em;
+  }
 }
 
 .clearfix:after {

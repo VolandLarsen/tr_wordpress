@@ -15,17 +15,39 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'tr_theme' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'tr_theme' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'tr_theme' ), 'tr_theme', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
+            <div class="footer-container">
+                <div class="container">
+                    <ul class="footer-info-container">
+                        <li class="adress-container">
+                            <p class="content-head"><?php echo get_theme_mod('footer_address_head'); ?></p>
+                            <p class="content-text"><?php echo get_theme_mod('footer_address'); ?></p>
+                        </li>
+                        <li class="footer-social">
+                            <ul class="footer-social-list">
+                                <li class="footer-social-item">
+                                    <a href="<?php echo get_theme_mod('footer_facebook_link'); ?>" class="footer-social-link"><?php echo get_theme_mod('footer_facebook_icon'); ?></a>
+                                </li>
+                                <li class="footer-social-item">
+                                    <a href="<?php echo get_theme_mod('footer_twitter_link'); ?>" class="footer-social-link"><?php echo get_theme_mod('footer_twitter_icon'); ?></a>
+                                </li>
+                                <li class="footer-social-item">
+                                    <a href="<?php echo get_theme_mod('footer_linkedin_link'); ?>" class="footer-social-link"><?php echo get_theme_mod('footer_linkedin_icon'); ?></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="about-footer-container">
+                            <p class="content-head"><?php echo get_theme_mod('footer_about_head'); ?></p>
+                            <p class="content-text"><?php echo get_theme_mod('footer_about_text'); ?></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright-container">
+                <div class="container">
+                    <p class="copyright-text">Copyright © 2015 Template. All Rights Reserved</p>
+                    <p class="copyright-text">Made with <a href="#" class="copy-link"><span class="copy-link-heart">♥</span> by Kamal Chaneman</a></p>
+                </div>
+            </div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

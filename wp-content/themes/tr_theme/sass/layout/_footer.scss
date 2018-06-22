@@ -1,0 +1,44 @@
+.footer-container {
+    background-color: #3a3e64;
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+.content-head {
+    color: $additional_color;
+    font-family: $secondary_font;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.content-text {
+    color: $additional_color;
+    font-family: $secondary_font;
+    font-size: 14px;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.footer-copyright-container {
+    background-color: #313454;
+    padding: 30px;
+    .copyright-text {
+        color: #808080;
+        font-family: "Myriad Pro", sans-serif;
+        font-size: 14px;
+        text-align: center;
+        .copy-link {
+            color: $additional_color;
+            font-family: "Myriad Pro", sans-serif;
+            text-decoration: none;
+            &:hover {
+                color: $hover_color;
+            }
+            .copy-link-heart {
+                color: $hover_color;
+            }
+        }
+    }
+}

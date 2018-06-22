@@ -28,12 +28,16 @@
                 <nav id="site-navigation" class="main-navigation">
                     <div class="navigation-container">
                         <div class="logo-container"><?php the_custom_logo(); ?></div>
-                        <?php
-                        wp_nav_menu(array(
-                            'theme_location' => 'menu-1',
-                            'menu_class' => 'primary-menu'
-                        ));
-                        ?>
+                        <div>
+                            <input type="checkbox" class="burger" id="burger" name="burger">
+                            <label for="burger" class="burger-label"><i class="fas fa-bars"></i></label>
+                            <?php
+                            wp_nav_menu(array(
+                                'theme_location' => 'menu-1',
+                                'menu_class' => 'primary-menu'
+                            ));
+                            ?>
+                        </div>
                     </div>
                 </nav><!-- #site-navigation -->
             <div class="header-text">

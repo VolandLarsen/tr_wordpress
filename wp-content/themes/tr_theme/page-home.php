@@ -113,6 +113,41 @@ get_header();
                     </ul>
                 </div>
             </section>
+            <section class="testemonials">
+                <div class="testemonial-slider">
+                    <?php
+                    $loop = new WP_Query(array(
+                        'post_type' => 'testemonial',
+                        'posts_per_page' => '5'
+                    ));
+                    while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <div>
+                            <ul class="testemonial-list">
+                                <li><?php the_post_thumbnail() ?></li>
+                                <li>
+                                    <div>
+                                        <blockquote><?php the_content(); ?></blockquote>
+                                        <span><?php the_title(); ?></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    <?php endwhile; // End of the loop.
+                    wp_reset_postdata();
+                    ?>
+                </div>
+            </section>
+            <section class="download-section">
+                <div class="container">
+                    <div class="download-container">
+                        <h3><?php echo get_theme_mod('download_head_text'); ?></h3>
+                        <p><?php echo get_theme_mod('download_subhead_text'); ?></p>
+                        <div class="button-container">
+                        <a class="main-button" href="<?php echo get_theme_mod('download_link_url'); ?>"><?php echo get_theme_mod('download_link_text'); ?></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main><!-- #main -->
     </div><!-- #primary -->
 

@@ -3,12 +3,37 @@
 }
 div.primary-menu {
     ul {
+        transition: 1s;
         display: flex;
         justify-content: space-around;
         align-items: flex-start;
+        padding: 0;
+        @media (min-width: $xs) {
+            margin: auto 0;
+            display: none;
+        }
+        @media (min-width: $sm) {
+            display: flex;
+            margin: auto 0;
+        }
+        @media (min-width: $md) {
+            display: flex;
+            margin: auto 30px;
+        }
+        @media (min-width: $lg) {
+            display: flex;
+            margin: auto 30px;
+        }
         li {
             list-style-type: none;
             margin: 5px 0 5px 20px;
+            text-align: center;
+            @media (min-width: $xs) {
+                margin: auto 0;
+            }
+            @media (min-width: $sm) {
+                margin: 5px 0 5px 20px;
+            }
             a {
                 opacity: 0.75;
                 color: $additional_color;
@@ -35,6 +60,12 @@ div.primary-menu {
     font-weight: 700;
     text-transform: uppercase;
     text-align: center;
+    @media (min-width: $xs) {
+        font-size: 35px;
+    }
+    @media (min-width: $sm) {
+        font-size: 65px;
+    }
 }
 
 .header-subheading {
@@ -47,4 +78,38 @@ div.primary-menu {
     font-weight: 400;
     line-height: 33px;
     text-align: center;
+}
+
+.burger {
+    display: none;
+}
+
+.burger-label {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    padding: 0;
+    color: $secondary_color;
+    @media (min-width: $sm) {
+        display: none;
+    }
+    :hover {
+        cursor: pointer;
+        color: $hover-color;
+    }
+}
+
+input.burger:checked ~ div.primary-menu ul {
+    @media (min-width: $xs) {
+        display: block;
+    }
+    @media (min-width: $sm) {
+        display: flex;
+    }
+    @media (min-width: $md) {
+        display: flex;
+    }
+    @media (min-width: $lg) {
+        display: flex;
+    }
 }
