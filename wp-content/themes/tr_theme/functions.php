@@ -131,7 +131,7 @@ function tr_theme_scripts() {
 
     wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick/slick-theme.css');
 
-    wp_enqueue_script("jquery");
+    wp_enqueue_script("jQuery");
 
     wp_enqueue_script('main-js', get_template_directory_uri() . '/js/main.js');
 

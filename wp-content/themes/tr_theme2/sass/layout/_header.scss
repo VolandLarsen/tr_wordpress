@@ -1,0 +1,19 @@
+.menu-main-menu-container {
+    ul {
+        li {
+            margin: 10px 15px;
+            a {
+                display: block;
+                text-align: center;
+                color: $additional_color;
+                text-decoration: none;
+                font-family: $main_font;
+                &:hover {
+                    color: $hover_color;
+                    border-bottom: 3px solid $hover_color;
+                }
+            }
+        }
+    }
+}
+
