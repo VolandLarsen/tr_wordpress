@@ -240,22 +240,24 @@ get_header();
                     <p class="section-text"><?php echo get_theme_mod('blog_head_text'); ?></p>
                     <h2 class="section-heading"><?php echo get_theme_mod('blog_heading'); ?></h2>
                     <p class="main-text"><?php echo get_theme_mod('blog_main_text'); ?></p>
-                    <div class="service-list d-flex .flex-row flex-wrap">
+                </div>
+                    <div class="service-list d-flex .flex-row flex-wrap justify-content-center table">
                         <?php
                         $loop = new WP_Query(array(
-                            'post_type' => 'post',
-                            'posts_per_page' => '7'
+                            'post_type' => 'works_post',
+                            'posts_per_page' => '8'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="about-item col-4">
+                            <div class="blog-item col-3 table-cell">
                                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                     <div class="about-img">
                                         <?php the_post_thumbnail() ?>
                                         <div class="absolute-text">
                                             <a href="<?php the_permalink() ?>" class="text-container">
                                                 <div class="center-text">
-                                                    <?php the_field('icon_field') ?>
+                                                    <img class="post-icon" src="<?php the_field('works_icon') ?>">
                                                     <p><?php echo the_title(); ?></p>
+                                                    <?php the_excerpt(); ?>
                                                 </div>
                                             </a>
                                         </div>
@@ -266,8 +268,110 @@ get_header();
                         wp_reset_postdata();
                         ?>
                     </div>
+            </section>
+            <section class="testemonials">
+                <div class="container">
+                    <div class="testemonials-slider">
+                        <?php
+                        $loop = new WP_Query(array(
+                            'post_type' => 'testemonial_post',
+                            'posts_per_page' => '6'
+                        ));
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <div class="col-2">
+                                    <div class="testemonial-icon">
+                                        <div>
+                                            <?php the_post_thumbnail(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="testemonial-text col-7">
+                                    <?php the_content(); ?>
+                                    <span class="testemonial-head"><?php the_title(); ?></span>
+                                </div>
+                            </div>
+                        <?php endwhile; // End of the loop.
+
+                        wp_reset_postdata();
+
+                        ?>
+                    </div>
                 </div>
             </section>
+            <section class="testemonials" style="background-image: url('<?php echo get_theme_mod("testemonials_background") ?>'); background-size: cover;">
+                <div class="container">
+                    <p class="section-text"><?php echo get_theme_mod('testemonials_head_text'); ?></p>
+                    <h2 class="section-heading"><?php echo get_theme_mod('testemonials_heading'); ?></h2>
+                    <div class="testemonials d-flex flex-row justify-content-center align-items-center flex-wrap">
+                        <?php
+                        $loop = new WP_Query(array(
+                            'post_type' => 'testemonial_post',
+                            'posts_per_page' => '4'
+                        ));
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                            <div class="d-flex flex-row justify-content-start align-items-start col-6">
+                                <div class="col-3">
+                                    <div class="testemonial-posts-icon">
+                                        <img class="avatar-testemonial" src="<?php the_field('testemonial_avatar') ?>">
+                                    </div>
+                                </div>
+                                <div class="testemonial-posts-text col-9">
+                                    <div class="testemonial-head-container">
+                                        <span class="testemonial-posts-head"><?php the_title(); ?></span>
+                                        <p class="testemonial-position"><?php the_field('testemonial_position'); ?></p>
+                                    </div>
+                                    <span class="testemonial-content">
+                                        <?php the_content(); ?>
+                                    </span>
+                                </div>
+                            </div>
+                        <?php endwhile; // End of the loop.
+
+                        wp_reset_postdata();
+
+                        ?>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blog">
+                <div class="container">
+                    <p class="section-text"><?php echo get_theme_mod('blog_head_text'); ?></p>
+                    <h2 class="section-heading"><?php echo get_theme_mod('blog_heading'); ?></h2>
+                    <div class="testemonials d-flex flex-row justify-content-start align-items-start">
+                        <?php
+                        $loop = new WP_Query(array(
+                            'post_type' => 'post',
+                            'posts_per_page' => '3'
+                        ));
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <div class="blog-post-container">
+                            <a href="<?php the_permalink(); ?>" class="post-img">
+                                <?php the_post_thumbnail(); ?>
+                                <div class="post-date">
+                                    <p class="post-date-number"><?php the_time('j'); ?></p>
+                                    <p class="post-date-month"><?php the_time('M'); ?></p>
+                                </div>
+                            </a>
+                            <h3 class="post-name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                            <span class="post-excerpt"><?php the_excerpt(); ?></span>
+                            <div class="post-info d-flex flex-row">
+                                <div class="info-container views-container d-flex flex-row justify-content-start align-items-center">
+                                    <i class="fas fa-eye"></i> <?php echo do_shortcode('[post-views]'); ?>
+                                </div>
+                                <div class="info-container"><i class="fas fa-comment-dots"></i> <?php comments_number(); ?></div>
+                            </div>
+                        </div>
+                        <?php endwhile; // End of the loop.
+
+                        wp_reset_postdata();
+
+                        ?>
+                    </div>
+                </div>
+            </section>
+
         </main><!-- #main -->
     </div><!-- #primary -->
 

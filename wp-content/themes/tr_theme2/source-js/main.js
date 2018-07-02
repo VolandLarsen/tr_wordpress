@@ -15,10 +15,12 @@ jQuery(document).ready(function(){
         infinite: true,
         speed: 500,
         fade: true,
-        adaptiveHeight: false,
+        adaptiveHeight: true,
         arrows: true,
         autoplay: true,
-        autoplaySpeed: 2000
+        autoplaySpeed: 2000,
+        nextArrow: '<i class="fas fa-chevron-right"></i>',
+        prevArrow: '<i class="fas fa-chevron-left"></i>',
     });
 
     if (jQuery('li.show-text a.tab-link').hasClass('active', 'show')) {

@@ -27,7 +27,7 @@ nav.header-navigation {
     z-index: 1;
     .banner-container {
         padding: 250px;
-        &:after {
+        &:before {
             content: '';
             position: absolute;
             top: 0;
@@ -112,7 +112,7 @@ section {
 .about-img {
     position: relative;
     display: block;
-    img {
+    img.attachment-post-thumbnail {
         display: block;
         width: 100%;
         height: auto;
@@ -245,7 +245,16 @@ section {
 // design
 
 .design {
-    background-color: rgba(255, 255, 255, 0.85);
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.85);
+    }
 }
 
 .image-design-container {
@@ -275,6 +284,10 @@ div.ex {
 }
 
 // testemonial
+
+.testemonials-slider {
+    position: relative;
+}
 
 .testemonials {
     background-color: #f8f8f8;
@@ -318,6 +331,31 @@ div.ex {
     }
 }
 
+.fa-chevron-left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    color: #cccccc;
+    font-size: 22px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, 0);
+    color: #cccccc;
+    font-size: 22px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
 // team
 
 .social-member-link {
@@ -359,4 +397,155 @@ div.ex {
         font-size: 15px;
         text-align: center;
     }
+}
+
+// blog
+
+img.post-icon {
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+}
+
+.blog-item {
+    padding-right: 0!important;
+    padding-left: 0!important;
+    article:hover {
+        transition: all 0.5s;
+    }
+}
+
+// testemonial section
+
+.testemonial-posts-head {
+    color: $main_color;
+    font-family: $main_font;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.testemonial-position {
+    color: $main_color;
+    font-family: $additional_font;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.testemonial-posts-text .testemonial-content {
+    color: $secondary_color;
+    font-family: $additional_font;
+    font-size: 15px;
+}
+
+.testemonial-head-container {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    &:after {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 3px;
+        background-color: #f38181;
+        display: block;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.avatar-testemonial {
+    max-width: 100%;
+    height: auto;
+}
+
+section.testemonials {
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+}
+
+div.testemonials {
+    background-color: transparent;
+}
+
+// blog
+
+.post-img {
+    position: relative;
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    .post-date {
+        position: absolute;
+        bottom: 15px;
+        left: -15px;
+    }
+}
+
+.blog-post-container {
+    padding: 20px;
+}
+
+.post-date {
+    background-color: #95e1d3;
+    padding: 10px;
+}
+
+.post-date-number {
+    color: $additional_color;
+    font-family: $main_font;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.post-date-month {
+    margin: 0;
+    color: $additional_color;
+    font-family: $additional_font;
+    font-weight: 300;
+}
+
+h3.post-name {
+    a {
+        text-decoration: none;
+        color: $main_color;
+        font-family: $main_font;
+        font-size: 14px;
+        text-transform: uppercase;
+        &:hover {
+            color: #f38181;
+        }
+    }
+}
+
+.post-excerpt {
+    color: $secondary_color;
+    font-family: $additional_font;
+    font-size: 15px;
+}
+
+.info-container {
+    padding: 5px;
+}
+
+i.fa-comment-dots, i.fa-eye {
+    color: #95e1d3!important;
+}
+
+.info-container {
+    color: $secondary_color;
+    font-family: $additional_font;
+    font-size: 15px;
+    font-style: italic;
 }

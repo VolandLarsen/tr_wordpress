@@ -468,6 +468,46 @@ function kulyk_wordpress_customize_register($wp_customize)
         'type' => 'text',
     ));
 
+    // testemonials heading
+
+    $wp_customize->add_section('testemonials_settings', array(
+        'title' => __('Testemonials settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('testemonials_heading', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'testemonials_heading', array(
+        'label' => __('Enter testemonials heading text', 'kulyk_wordpress'),
+        'section' => 'testemonials_settings',
+        'settings' => 'testemonials_heading',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('testemonials_head_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'testemonials_head_text', array(
+        'label' => __('Enter testemonials head text', 'kulyk_wordpress'),
+        'section' => 'testemonials_settings',
+        'settings' => 'testemonials_head_text',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('testemonials_background');
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'testemonials_background', array(
+        'label' => __('Insert background design image', 'kulyk_wordpress'),
+        'section' => 'testemonials_settings',
+        'settings' => 'testemonials_background',
+    )));
+
 }
 
 add_action('customize_register', 'kulyk_wordpress_customize_register');
@@ -677,6 +717,34 @@ function create_our_team_post() {
                 'not_found' => 'No teammates found',
                 'not_found_in_trash' => 'No teammates found in Trash',
                 'parent' => 'Parent teammate Post'
+            ),
+            'public' => true,
+            'menu_position' => 15,
+            'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+            'has_archive' => true
+        )
+    );
+}
+
+add_action( 'init', 'create_works_post' );
+
+function create_works_post() {
+    register_post_type( 'works_post',
+        array(
+            'labels' => array(
+                'name' => 'Works',
+                'singular_name' => 'Work',
+                'add_new' => 'Add New',
+                'add_new_item' => 'Add New Work Post',
+                'edit' => 'Edit',
+                'edit_item' => 'Edit Work',
+                'new_item' => 'New Work',
+                'view' => 'View',
+                'view_item' => 'View Work Post',
+                'search_items' => 'Search works',
+                'not_found' => 'No works found',
+                'not_found_in_trash' => 'No works found in Trash',
+                'parent' => 'Parent work Post'
             ),
             'public' => true,
             'menu_position' => 15,
