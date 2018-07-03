@@ -14,9 +14,43 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-
-		</div><!-- .site-info -->
+        <div class="container footer-container">
+            <div class="site-info d-flex flex-row">
+                <ul class="footer-sidebar-section col-4">
+                    <li>
+                        <div class="footer-logo">
+                            <a href="<?php echo get_home_url(); ?>">
+                                <img src="<?php echo get_theme_mod('footer_logo'); ?>" alt="logo" class="logo">
+                            </a>
+                        </div>
+                    </li>
+                    <?php
+                    if ( function_exists('dynamic_sidebar') )
+                        dynamic_sidebar('first-column-sidebar');
+                    ?>
+                </ul>
+                <ul class="footer-sidebar-section col-4">
+                    <?php
+                    if ( function_exists('dynamic_sidebar') )
+                        dynamic_sidebar('second-column-sidebar');
+                    ?></ul>
+                <ul class="footer-sidebar-section col-4">
+                    <?php
+                    if ( function_exists('dynamic_sidebar') )
+                        dynamic_sidebar('third-column-sidebar');
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <?php
+                /* translators: 1: Theme name, 2: Theme author. */
+                printf( esc_html__( '© 2016 MoGo free PSD template %1$s by %2$s.', '' ), '', '<a href="http://underscores.me/">Laaqiq</a>' );
+                ?>
+            </div>
+        </div>
+		<!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

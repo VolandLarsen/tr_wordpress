@@ -101,6 +101,7 @@ get_header();
             </section>
             <section class="design"
                      style="background-image: url('<?php echo get_theme_mod("design_background"); ?>'); background-size: cover;">
+                <div class="background-overlay">
                 <div class="container">
                     <div class="design-container">
                         <p class="section-text"><?php echo get_theme_mod('design_head_text'); ?></p>
@@ -111,6 +112,7 @@ get_header();
                              src="<?php echo get_theme_mod('design_tablet') ?>">
                         <img class="mobile" src="<?php echo get_theme_mod('design_mobile') ?>">
                     </div>
+                </div>
                 </div>
             </section>
             <section class="about">
@@ -300,37 +302,39 @@ get_header();
                 </div>
             </section>
             <section class="testemonials" style="background-image: url('<?php echo get_theme_mod("testemonials_background") ?>'); background-size: cover;">
-                <div class="container">
-                    <p class="section-text"><?php echo get_theme_mod('testemonials_head_text'); ?></p>
-                    <h2 class="section-heading"><?php echo get_theme_mod('testemonials_heading'); ?></h2>
-                    <div class="testemonials d-flex flex-row justify-content-center align-items-center flex-wrap">
-                        <?php
-                        $loop = new WP_Query(array(
-                            'post_type' => 'testemonial_post',
-                            'posts_per_page' => '4'
-                        ));
-                        while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="d-flex flex-row justify-content-start align-items-start col-6">
-                                <div class="col-3">
-                                    <div class="testemonial-posts-icon">
-                                        <img class="avatar-testemonial" src="<?php the_field('testemonial_avatar') ?>">
+                <div class="background-overlay">
+                    <div class="container">
+                        <p class="section-text"><?php echo get_theme_mod('testemonials_head_text'); ?></p>
+                        <h2 class="section-heading"><?php echo get_theme_mod('testemonials_heading'); ?></h2>
+                        <div class="testemonials d-flex flex-row justify-content-center align-items-center flex-wrap">
+                            <?php
+                            $loop = new WP_Query(array(
+                                'post_type' => 'testemonial_post',
+                                'posts_per_page' => '4'
+                            ));
+                            while ($loop->have_posts()) : $loop->the_post(); ?>
+                                <div class="d-flex flex-row justify-content-start align-items-start col-6">
+                                    <div class="col-3">
+                                        <div class="testemonial-posts-icon">
+                                            <img class="avatar-testemonial" src="<?php the_field('testemonial_avatar') ?>">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="testemonial-posts-text col-9">
-                                    <div class="testemonial-head-container">
-                                        <span class="testemonial-posts-head"><?php the_title(); ?></span>
-                                        <p class="testemonial-position"><?php the_field('testemonial_position'); ?></p>
-                                    </div>
-                                    <span class="testemonial-content">
+                                    <div class="testemonial-posts-text col-9">
+                                        <div class="testemonial-head-container">
+                                            <span class="testemonial-posts-head"><?php the_title(); ?></span>
+                                            <p class="testemonial-position"><?php the_field('testemonial_position'); ?></p>
+                                        </div>
+                                        <span class="testemonial-content">
                                         <?php the_content(); ?>
                                     </span>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php endwhile; // End of the loop.
+                            <?php endwhile; // End of the loop.
 
-                        wp_reset_postdata();
+                            wp_reset_postdata();
 
-                        ?>
+                            ?>
+                        </div>
                     </div>
                 </div>
             </section>

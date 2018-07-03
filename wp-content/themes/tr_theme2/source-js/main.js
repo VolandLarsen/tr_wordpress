@@ -23,8 +23,11 @@ jQuery(document).ready(function(){
         prevArrow: '<i class="fas fa-chevron-left"></i>',
     });
 
-    if (jQuery('li.show-text a.tab-link').hasClass('active', 'show')) {
-        jQuery('.li.show-text .tab-content').show();
-    }
+    // if (jQuery('li.show-text a.tab-link').hasClass('active', 'show')) {
+    //     jQuery('.li.show-text .tab-content').show();
+    // }
+
+    jQuery('.wpsw-social-links').addClass('d-flex flex-row justify-content-center align-items-center flex-wrap');
+    jQuery('.instagram-pics').addClass('d-flex flex-row justify-content-center align-items-center flex-wrap')
 });
 

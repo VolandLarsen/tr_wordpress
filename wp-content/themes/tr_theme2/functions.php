@@ -508,6 +508,20 @@ function kulyk_wordpress_customize_register($wp_customize)
         'settings' => 'testemonials_background',
     )));
 
+    // footer settings
+
+    $wp_customize->add_section('footer_settings', array(
+        'title' => __('Footer settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('footer_logo');
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_logo', array(
+        'label' => __('Insert background design image', 'kulyk_wordpress'),
+        'section' => 'footer_settings',
+        'settings' => 'footer_logo',
+    )));
+
 }
 
 add_action('customize_register', 'kulyk_wordpress_customize_register');
@@ -752,4 +766,125 @@ function create_works_post() {
             'has_archive' => true
         )
     );
+}
+
+function register_my_widgets(){
+    register_sidebar( array(
+        'name' => "Footer 1-st column sidebar",
+        'id' => 'first-column-sidebar',
+        'description' => '1 column sidebar',
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
+    ) );
+    register_sidebar( array(
+        'name' => "Footer 2-st column sidebar",
+        'id' => 'second-column-sidebar',
+        'description' => '2 column sidebar',
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
+    ) );
+    register_sidebar( array(
+        'name' => "Footer 3-st column sidebar",
+        'id' => 'third-column-sidebar',
+        'description' => '3 column sidebar',
+        'before_title' => '<h4>',
+        'after_title' => '</h4>'
+    ) );
+}
+add_action( 'widgets_init', 'register_my_widgets' );
+
+class truePostsWidget extends WP_Widget {
+
+    /*
+     * создание виджета
+     */
+    function __construct() {
+        parent::__construct(
+            'true_widget',
+            'Custom recent posts', // заголовок виджета
+            array( 'description' => 'Output recent posts' ) // описание
+        );
+    }
+
+    /*
+     * фронтэнд виджета
+     */
+    public function widget( $args, $instance ) {
+        $title = apply_filters( 'widget_title', $instance['title'] ); // к заголовку применяем фильтр (необязательно)
+        $posts_per_page = $instance['posts_per_page'];
+
+        echo $args['before_widget'];
+
+        if ( ! empty( $title ) )
+            echo $args['before_title'] . $title . $args['after_title'];
+
+        $q = new WP_Query("posts_per_page=$posts_per_page&orderby=date");
+        if( $q->have_posts() ):
+            ?><ul class="recent-posts-list"><?php
+            while( $q->have_posts() ): $q->the_post();
+                ?>
+                <li class="recent-post-area d-flex justify-content-start align-items-start">
+                    <div class="widget-post-img">
+                        <?php the_post_thumbnail(); ?>
+                    </div>
+                    <div class="widget-post-content">
+                        <a class="widget-post-head" href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                        <div><?php the_time('j M Y'); ?></div>
+                    </div>
+                </li>
+            <?php
+            endwhile;
+            ?></ul><?php
+        endif;
+        wp_reset_postdata();
+
+        echo $args['after_widget'];
+    }
+
+    /*
+     * бэкэнд виджета
+     */
+    public function form( $instance ) {
+        if ( isset( $instance[ 'title' ] ) ) {
+            $title = $instance[ 'title' ];
+        }
+        if ( isset( $instance[ 'posts_per_page' ] ) ) {
+            $posts_per_page = $instance[ 'posts_per_page' ];
+        }
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>">Header</label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>">Amount of posts:</label>
+            <input id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo ($posts_per_page) ? esc_attr( $posts_per_page ) : '4'; ?>" size="3" />
+        </p>
+        <?php
+    }
+
+    /*
+     * сохранение настроек виджета
+     */
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['posts_per_page'] = ( is_numeric( $new_instance['posts_per_page'] ) ) ? $new_instance['posts_per_page'] : '4'; // по умолчанию выводятся 5 постов
+        return $instance;
+    }
+}
+
+/*
+ * регистрация виджета
+ */
+function true_top_posts_widget_load() {
+    register_widget( 'truePostsWidget' );
+}
+add_action( 'widgets_init', 'true_top_posts_widget_load' );
+
+function do_excerpt($string, $word_limit) {
+    $words = explode(' ', $string, ($word_limit + 1));
+    if (count($words) > $word_limit)
+        array_pop($words);
+    echo implode(' ', $words).'';
 }
