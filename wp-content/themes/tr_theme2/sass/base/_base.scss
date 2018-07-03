@@ -4,5 +4,8 @@
 
 .banner-background-overlay {
     background-image: linear-gradient(to top, rgba(252, 227, 138, 0.9) 0%, rgba(243, 129, 129, 0.9) 100%);
-        padding: 250px;
+    padding: 250px;
+    @media (max-width: 576px) {
+        padding: 50px!important;
+    }
 }

@@ -423,48 +423,48 @@ function kulyk_wordpress_customize_register($wp_customize)
         'type' => 'text',
     ));
 
-    // blog
+    // works
 
-    $wp_customize->add_section('blog_settings', array(
-        'title' => __('Blog settings', 'kulyk_wordpress')
+    $wp_customize->add_section('works_settings', array(
+        'title' => __('Works settings', 'kulyk_wordpress')
     ));
 
-    $wp_customize->add_setting('blog_heading', array(
+    $wp_customize->add_setting('works_heading', array(
         'default' => __('', 'kulyk_wordpress'),
         'transport' => 'refresh',
     ));
 
     $wp_customize->add_control(
-        'blog_heading', array(
-        'label' => __('Enter blog heading text', 'kulyk_wordpress'),
-        'section' => 'blog_settings',
-        'settings' => 'blog_heading',
+        'works_heading', array(
+        'label' => __('Enter works heading text', 'kulyk_wordpress'),
+        'section' => 'works_settings',
+        'settings' => 'works_heading',
         'type' => 'text',
     ));
 
-    $wp_customize->add_setting('blog_head_text', array(
+    $wp_customize->add_setting('works_head_text', array(
         'default' => __('', 'kulyk_wordpress'),
         'transport' => 'refresh',
     ));
 
     $wp_customize->add_control(
-        'blog_head_text', array(
-        'label' => __('Enter blog head text', 'kulyk_wordpress'),
-        'section' => 'blog_settings',
-        'settings' => 'blog_head_text',
+        'works_head_text', array(
+        'label' => __('Enter works head text', 'kulyk_wordpress'),
+        'section' => 'works_settings',
+        'settings' => 'works_head_text',
         'type' => 'text',
     ));
 
-    $wp_customize->add_setting('blog_main_text', array(
+    $wp_customize->add_setting('works_main_text', array(
         'default' => __('', 'kulyk_wordpress'),
         'transport' => 'refresh',
     ));
 
     $wp_customize->add_control(
-        'blog_main_text', array(
-        'label' => __('Enter blog main text', 'kulyk_wordpress'),
-        'section' => 'blog_settings',
-        'settings' => 'blog_main_text',
+        'works_main_text', array(
+        'label' => __('Enter works main text', 'kulyk_wordpress'),
+        'section' => 'works_settings',
+        'settings' => 'works_main_text',
         'type' => 'text',
     ));
 
@@ -507,6 +507,38 @@ function kulyk_wordpress_customize_register($wp_customize)
         'section' => 'testemonials_settings',
         'settings' => 'testemonials_background',
     )));
+
+    // blog settings
+
+    $wp_customize->add_section('blog_settings', array(
+        'title' => __('Blog settings', 'kulyk_wordpress')
+    ));
+
+    $wp_customize->add_setting('blog_heading', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'blog_heading', array(
+        'label' => __('Enter blog heading text', 'kulyk_wordpress'),
+        'section' => 'blog_settings',
+        'settings' => 'blog_heading',
+        'type' => 'text',
+    ));
+
+    $wp_customize->add_setting('blog_head_text', array(
+        'default' => __('', 'kulyk_wordpress'),
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+        'blog_head_text', array(
+        'label' => __('Enter blog head text', 'kulyk_wordpress'),
+        'section' => 'blog_settings',
+        'settings' => 'blog_head_text',
+        'type' => 'text',
+    ));
 
     // footer settings
 

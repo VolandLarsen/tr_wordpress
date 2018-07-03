@@ -71,6 +71,10 @@ section {
     font-size: 15px;
 }
 
+.about-item {
+    padding: 15px;
+}
+
 .section-heading {
     color: $main_color;
     font-family: $main_font;
@@ -233,6 +237,11 @@ section {
 
 .image-design-container {
     position: relative;
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
     .mobile {
         position: absolute;
         top: 50%;

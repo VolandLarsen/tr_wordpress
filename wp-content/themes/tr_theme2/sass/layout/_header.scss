@@ -17,3 +17,47 @@
     }
 }
 
+.banner-background-overlay {
+    .container {
+        p {
+            color: $additional_color;
+            font-family: $secondary_font;
+            font-size: 72px;
+            text-align: center;
+            z-index: 3;
+            @media (max-width: 576px) {
+                font-size: 22px;
+            }
+            @media (min-width: 768px) {
+                font-size: 42px;
+            }
+            @media (min-width: 992px) {
+                font-size: 72px;
+            }
+        }
+        h2 p {
+            display: block;
+            max-width: 10em;
+            margin: 0 auto;
+            color: $additional_color;
+            font-family: $main_font;
+            font-size: 150px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            z-index: 3;
+            @media (max-width: 576px) {
+                font-size: 37px;
+            }
+            @media (min-width: 768px) {
+                font-size: 52px;
+            }
+            @media (min-width: 992px) {
+                font-size: 82px;
+            }
+            @media (min-width: 1200px) {
+                font-size: 150px;
+            }
+        }
+    }
+}

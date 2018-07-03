@@ -15,8 +15,8 @@
 
 	<footer id="colophon" class="site-footer">
         <div class="container footer-container">
-            <div class="site-info d-flex flex-row">
-                <ul class="footer-sidebar-section col-4">
+            <div class="site-info d-flex flex-row flex-wrap justify-content-start">
+                <ul class="footer-sidebar-section col-md-4 col-sm-12">
                     <li>
                         <div class="footer-logo">
                             <a href="<?php echo get_home_url(); ?>">
@@ -29,12 +29,12 @@
                         dynamic_sidebar('first-column-sidebar');
                     ?>
                 </ul>
-                <ul class="footer-sidebar-section col-4">
+                <ul class="footer-sidebar-section col-md-4 col-sm-12">
                     <?php
                     if ( function_exists('dynamic_sidebar') )
                         dynamic_sidebar('second-column-sidebar');
                     ?></ul>
-                <ul class="footer-sidebar-section col-4">
+                <ul class="footer-sidebar-section col-md-4 col-sm-12">
                     <?php
                     if ( function_exists('dynamic_sidebar') )
                         dynamic_sidebar('third-column-sidebar');

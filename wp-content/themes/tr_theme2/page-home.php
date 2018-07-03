@@ -22,14 +22,14 @@ get_header();
                     <p class="section-text"><?php echo get_theme_mod('about_head_text'); ?></p>
                     <h2 class="section-heading"><?php echo get_theme_mod('about_heading'); ?></h2>
                     <p class="main-text"><?php echo get_theme_mod('about_main_text'); ?></p>
-                    <div class="about-list d-flex .flex-row">
+                    <div class="about-list d-flex flex-wrap flex-row">
                         <?php
                         $loop = new WP_Query(array(
                             'post_type' => 'about_post',
                             'posts_per_page' => '3'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="about-item col-4">
+                            <div class="about-item col-lg-4 col-md-4 col-sm-12">
                                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                     <div class="about-img">
                                         <?php the_post_thumbnail() ?>
@@ -52,7 +52,7 @@ get_header();
             </section>
             <section class="achievements">
                 <div class="container">
-                    <div class="achievements-list d-flex .flex-row">
+                    <div class="achievements-list d-flex flex-row flex-wrap">
                         <?php
                         $loop = new WP_Query(array(
                             'post_type' => 'achievement_post',
@@ -60,7 +60,7 @@ get_header();
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
 
-                            <div class="achievements-item col">
+                            <div class="achievements-item col-lg col-md col-sm-12">
                                 <span class="achievement-content"><?php the_content(); ?></span>
                                 <p class="achievement-title"><?php the_title(); ?></p>
                             </div>
@@ -84,7 +84,7 @@ get_header();
                             'posts_per_page' => '6'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="service-item col-4 d-flex .flex-row">
+                            <div class="service-item col-lg-4 col-md-6 col-sm-12 d-flex flex-row flex-sm-column flex-md-row">
                                 <div class="icon"><?php the_post_thumbnail() ?></div>
                                 <div class="service-text">
                                     <span><?php the_title(); ?></span>
@@ -130,8 +130,11 @@ get_header();
                                 $counter++;
                                 ?>
                                 <div role="tabpanel" class="tab-pane <?= ($counter == 1) ? 'active' : '' ?>"
-                                     id="post-<?php the_ID(); ?>"><?php the_post_thumbnail(); ?>
-
+                                     id="post-<?php the_ID(); ?>">
+                                    <?php the_post_thumbnail(); ?>
+                                    <div class="ex">
+                                        <?php the_content() ?>
+                                    </div>
                                 </div>
                             <?php endwhile;
 
@@ -155,7 +158,7 @@ get_header();
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane <?= ($counter == 1) ? 'active' : '' ?>"
                                              id="post-<?php the_ID(); ?>">
-                                            <div class="ex"><?php the_content() ?></div>
+
                                         </div>
                                     </div>
                                 </li>
@@ -174,8 +177,8 @@ get_header();
                             'posts_per_page' => '6'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="d-flex flex-row justify-content-center align-items-center">
-                                <div class="col-2">
+                            <div class="d-flex flex-md-column flex-sm-column flex-lg-row justify-content-center align-items-center">
+                                <div class="col-lg-2 col-sm-6 col-md-4">
                                     <div class="testemonial-icon">
                                         <div>
                                             <?php the_post_thumbnail(); ?>
@@ -201,14 +204,14 @@ get_header();
                     <p class="section-text"><?php echo get_theme_mod('members_head_text'); ?></p>
                     <h2 class="section-heading"><?php echo get_theme_mod('members_heading'); ?></h2>
                     <p class="main-text"><?php echo get_theme_mod('members_main_text'); ?></p>
-                    <div class="service-list d-flex .flex-row flex-wrap">
+                    <div class="service-list d-flex flex-md-row flex-sm-column flex-wrap">
                         <?php
                         $loop = new WP_Query(array(
                             'post_type' => 'our_team_post',
                             'posts_per_page' => '3'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="about-item col-4">
+                            <div class="about-item col-md-4 col-sm-12">
                                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                     <div class="about-img">
                                         <?php the_post_thumbnail() ?>
@@ -239,18 +242,18 @@ get_header();
             </section>
             <section class="blog">
                 <div class="container">
-                    <p class="section-text"><?php echo get_theme_mod('blog_head_text'); ?></p>
-                    <h2 class="section-heading"><?php echo get_theme_mod('blog_heading'); ?></h2>
-                    <p class="main-text"><?php echo get_theme_mod('blog_main_text'); ?></p>
+                    <p class="section-text"><?php echo get_theme_mod('works_head_text'); ?></p>
+                    <h2 class="section-heading"><?php echo get_theme_mod('works_heading'); ?></h2>
+                    <p class="main-text"><?php echo get_theme_mod('works_main_text'); ?></p>
                 </div>
-                    <div class="service-list d-flex .flex-row flex-wrap justify-content-center table">
+                    <div class="service-list d-flex flex-row flex-wrap justify-content-center">
                         <?php
                         $loop = new WP_Query(array(
                             'post_type' => 'works_post',
                             'posts_per_page' => '8'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="blog-item col-3 table-cell">
+                            <div class="blog-item col-md-6 col-sm-12 col-lg-3 table-cell">
                                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                     <div class="about-img">
                                         <?php the_post_thumbnail() ?>
@@ -280,8 +283,8 @@ get_header();
                             'posts_per_page' => '6'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="d-flex flex-row justify-content-center align-items-center">
-                                <div class="col-2">
+                            <div class="d-flex flex-md-column flex-wrap flex-lg-row justify-content-center align-items-center">
+                                <div class="col-lg-2 col-sm-6 col-md-4">
                                     <div class="testemonial-icon">
                                         <div>
                                             <?php the_post_thumbnail(); ?>
@@ -313,7 +316,7 @@ get_header();
                                 'posts_per_page' => '4'
                             ));
                             while ($loop->have_posts()) : $loop->the_post(); ?>
-                                <div class="d-flex flex-row justify-content-start align-items-start col-6">
+                                <div class="d-flex flex-row justify-content-start align-items-start col-sm-12 col-md-6 ">
                                     <div class="col-3">
                                         <div class="testemonial-posts-icon">
                                             <img class="avatar-testemonial" src="<?php the_field('testemonial_avatar') ?>">
@@ -343,14 +346,14 @@ get_header();
                 <div class="container">
                     <p class="section-text"><?php echo get_theme_mod('blog_head_text'); ?></p>
                     <h2 class="section-heading"><?php echo get_theme_mod('blog_heading'); ?></h2>
-                    <div class="testemonials d-flex flex-row justify-content-start align-items-start">
+                    <div class="testemonials d-flex flex-row flex-wrap justify-content-start align-items-start">
                         <?php
                         $loop = new WP_Query(array(
                             'post_type' => 'post',
                             'posts_per_page' => '3'
                         ));
                         while ($loop->have_posts()) : $loop->the_post(); ?>
-                        <div class="blog-post-container">
+                        <div class="blog-post-container col-lg-4 col-md-4 col-sm-12">
                             <a href="<?php the_permalink(); ?>" class="post-img">
                                 <?php the_post_thumbnail(); ?>
                                 <div class="post-date">
