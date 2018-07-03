@@ -55,15 +55,19 @@
                         'posts_per_page' => '4'
                     ));
                     while ($loop->have_posts()) : $loop->the_post(); ?>
-                        <div class="banner-container" style="background-image: url('<?php the_post_thumbnail_url() ?>'); background-size: cover">
-                            <div class="container">
-                                <p><?php echo get_theme_mod('slider_text'); ?></p>
-                                <h2><?php the_content(); ?></h2>
+                            <div>
+                                <div class="banner-container" style="background-image: url('<?php the_post_thumbnail_url() ?>'); background-size: cover">
+                                    <div class="banner-background-overlay">
+                                        <div class="container">
+                                            <p><?php echo get_theme_mod('slider_text'); ?></p>
+                                            <h2><?php the_content(); ?></h2>
+                                        </div>
+                                        <div class="link-container">
+                                            <a class="header-link" href="<?php the_field('link_url'); ?>"><?php the_field('link_text'); ?></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="link-container">
-                                <a class="header-link" href="<?php the_field('link_url'); ?>"><?php the_field('link_text'); ?></a>
-                            </div>
-                        </div>
                     <?php endwhile; // End of the loop.
                     wp_reset_postdata();
                     ?>
